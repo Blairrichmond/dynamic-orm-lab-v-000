@@ -57,4 +57,11 @@ class Student < InteractiveRecord
    sql = "SELECT * FROM #{self.table_name} WHERE name = '#{name}'"
    DB[:conn].execute(sql)
  end
+
+ def self.find_by(attri)
+    col  = attri.keys[0].to_s
+    value = attri[attri.keys[0]]
+    sql = "SELECT * FROM #{self.table_name} WHERE #{col} = '#{value}'"
+    DB[:conn].execute(sql)
+  end
 end
